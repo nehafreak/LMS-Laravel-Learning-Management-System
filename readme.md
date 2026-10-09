@@ -1,56 +1,133 @@
-# LMS-Laravel
-[![Latest Stable Version](https://poser.pugx.org/lms-laravel/lms-laravel/v/stable)](https://packagist.org/packages/lms-laravel/lms-laravel)
-[![Total Downloads](https://poser.pugx.org/lms-laravel/lms-laravel/downloads)](https://packagist.org/packages/lms-laravel/lms-laravel)
-[![Latest Unstable Version](https://poser.pugx.org/lms-laravel/lms-laravel/v/unstable)](https://packagist.org/packages/lms-laravel/lms-laravel)
-[![License](https://poser.pugx.org/lms-laravel/lms-laravel/license)](https://packagist.org/packages/lms-laravel/lms-laravel)
+# LMS Laravel – Learning Management System
 
-- [About](#about)
-- [License](#license)
+## About
 
-### About
-LMS-Laravel is a Learning Management System (or LMS) that facilitates the creation of educational content by allowing you to manage courses and learning modules. The platform is simple and intuitive and provides features for:
-1. The Teacher (course creator)
-2. The Student (or user)
-3. The Admin
+LMS Laravel is an open-source Learning Management System built with the Laravel PHP framework. It provides a platform for creating and managing courses, learning modules, and educational content.
 
-As the name suggests, LMS-laravel is built on the latest Laravel framework, and uses various open source packages.
-This application is still in development, if you want to collaborate on the development, send us an email: 
+The application supports three main user roles:
+
+* **Admin:** Manages the platform and its resources.
+* **Teacher:** Creates and manages courses and learning materials.
+* **Student:** Accesses courses and educational content.
+
+The project uses Laravel and various open-source packages to provide its core functionality. It is suitable as a starting point for developers looking to build or customize an online learning platform.
+
+## Features
+
+* Course and learning module management
+* Separate roles for administrators, teachers, and students
+* API authentication using Laravel Passport
+* Google reCAPTCHA configuration
+* Email service integration
+* WebSocket support for chat functionality
+* Database migrations and seeders
+
+## Requirements
+
+* PHP and the required extensions
+* Composer
+* Node.js and npm
+* MySQL or another compatible database
+* Git
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/nehafreak/LMS-Laravel-Learning-Management-System.git
+cd LMS-Laravel-Learning-Management-System
 ```
-Angel: angelkurten@hotmail.com
+
+### 2. Install Dependencies
+
+```bash
+composer install
 ```
 
-### Installation
-* Run `git clone https://github.com/LMS-Laravel/LMS-Laravel.git LMS-Laravel`
-* `cd LMS-Laravel` 
-* Run `composer install` (install composer beforehand)
-* From the projects root run `cp .env.example .env`
-* Configure your `.env` file, with:
+### 3. Configure Environment Variables
 
-Database settings
+Create the environment configuration file:
+
+```bash
+cp .env.example .env
 ```
+
+Update your `.env` file with the appropriate settings.
+
+**Database configuration**
+
+```env
 DB_DATABASE=lms_laravel
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
-Google recaptcha settings (which you can configure from https://www.google.com/recaptcha/admin/site)
-```
+
+**Google reCAPTCHA configuration**
+
+Obtain your credentials from the [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin/site).
+
+```env
 ENABLE_CAPTCHA=true
-NOCAPTCHA_SITEKEY=xxxxxxxxxx
-NOCAPTCHA_SECRET=xxxxxxxxxxx
+NOCAPTCHA_SITEKEY=your_site_key
+NOCAPTCHA_SECRET=your_secret_key
 ```
 
-Email settings (using a provider like Mailgun, Amazon SES, etc)
+Configure the email settings in `.env` according to your preferred email provider, such as Mailgun or Amazon SES.
 
-* Run `php artisan key:generate`
-* Run `php artisan migrate`
-* For Auth API (to configure Laravel Passport), run: `php artisan passport:install`
-* Run `npm install && npm run dev`
-* Run `php artisan db:seed`
+### 4. Generate the Application Key
 
-* Start the Laravel server `php artisan serve --port=8000`
+```bash
+php artisan key:generate
+```
 
-* Start the Websocket server (for chat functionality) `php artisan websockets:serve`
+### 5. Run Database Migrations
 
+```bash
+php artisan migrate
+```
 
-### License
-LMS-Laravel is licensed under the MIT license. Enjoy!
+### 6. Configure API Authentication
+
+```bash
+php artisan passport:install
+```
+
+### 7. Install Frontend Dependencies
+
+```bash
+npm install
+npm run dev
+```
+
+### 8. Seed the Database
+
+```bash
+php artisan db:seed
+```
+
+### 9. Start the Application
+
+Run the Laravel development server:
+
+```bash
+php artisan serve --port=8000
+```
+
+Open `http://127.0.0.1:8000` in your browser.
+
+### 10. Start the WebSocket Server
+
+For chat functionality, run the following command in a separate terminal:
+
+```bash
+php artisan websockets:serve
+```
+
+## Contributing
+
+Contributions, improvements, and feature enhancements are welcome. Developers can extend the existing functionality to meet their project requirements.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
